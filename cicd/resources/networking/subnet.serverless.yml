@@ -6,7 +6,7 @@ Resources:
     Properties:
       VpcId:
         Ref: Vpc
-      CidrBlock: ${file(src/env/${opt:region}/${opt:stage}.yml):WebSubAz1}
+      CidrBlock: ${file(cicd/env/${opt:region}/${opt:stage}.yml):WebSubAz1}
       AvailabilityZone: "${opt:region}a"
       MapPublicIpOnLaunch: true
       Tags:
@@ -18,7 +18,7 @@ Resources:
     Properties:
       VpcId:
         Ref: Vpc
-      CidrBlock: ${file(src/env/${opt:region}/${opt:stage}.yml):WebSubAz2}
+      CidrBlock: ${file(cicd/env/${opt:region}/${opt:stage}.yml):WebSubAz2}
       AvailabilityZone: "${opt:region}b"
       MapPublicIpOnLaunch: true
       Tags:
@@ -30,7 +30,7 @@ Resources:
     Properties:
       VpcId:
         Ref: Vpc
-      CidrBlock: ${file(src/env/${opt:region}/${opt:stage}.yml):WebSubAz3}
+      CidrBlock: ${file(cicd/env/${opt:region}/${opt:stage}.yml):WebSubAz3}
       AvailabilityZone: "${opt:region}c"
       MapPublicIpOnLaunch: true
       Tags:
@@ -43,7 +43,7 @@ Resources:
     Properties:
       VpcId:
         Ref: Vpc
-      CidrBlock: ${file(src/env/${opt:region}/${opt:stage}.yml):AppSubAz1}
+      CidrBlock: ${file(cicd/env/${opt:region}/${opt:stage}.yml):AppSubAz1}
       AvailabilityZone: "${opt:region}a"
       MapPublicIpOnLaunch: false
       Tags:
@@ -55,7 +55,7 @@ Resources:
     Properties:
       VpcId:
         Ref: Vpc
-      CidrBlock: ${file(src/env/${opt:region}/${opt:stage}.yml):AppSubAz2}
+      CidrBlock: ${file(cicd/env/${opt:region}/${opt:stage}.yml):AppSubAz2}
       AvailabilityZone: "${opt:region}b"
       MapPublicIpOnLaunch: false
       Tags:
@@ -67,7 +67,7 @@ Resources:
     Properties:
       VpcId:
         Ref: Vpc
-      CidrBlock: ${file(src/env/${opt:region}/${opt:stage}.yml):AppSubAz3}
+      CidrBlock: ${file(cicd/env/${opt:region}/${opt:stage}.yml):AppSubAz3}
       AvailabilityZone: "${opt:region}c"
       MapPublicIpOnLaunch: false
       Tags:
@@ -80,7 +80,7 @@ Resources:
     Properties:
       VpcId:
         Ref: Vpc
-      CidrBlock: ${file(src/env/${opt:region}/${opt:stage}.yml):DbSubAz1}
+      CidrBlock: ${file(cicd/env/${opt:region}/${opt:stage}.yml):DbSubAz1}
       AvailabilityZone: "${opt:region}a"
       MapPublicIpOnLaunch: false
       Tags:
@@ -92,7 +92,7 @@ Resources:
     Properties:
       VpcId:
         Ref: Vpc
-      CidrBlock: ${file(src/env/${opt:region}/${opt:stage}.yml):DbSubAz2}
+      CidrBlock: ${file(cicd/env/${opt:region}/${opt:stage}.yml):DbSubAz2}
       AvailabilityZone: "${opt:region}b"
       MapPublicIpOnLaunch: false
       Tags:
@@ -104,7 +104,7 @@ Resources:
     Properties:
       VpcId:
         Ref: Vpc
-      CidrBlock: ${file(src/env/${opt:region}/${opt:stage}.yml):DbSubAz3}
+      CidrBlock: ${file(cicd/env/${opt:region}/${opt:stage}.yml):DbSubAz3}
       AvailabilityZone: "${opt:region}c"
       MapPublicIpOnLaunch: false
       Tags:

@@ -9,99 +9,33 @@ resources:
   - Conditions:
       Az1:
         Fn::Equals:
-          - ${file(src/env/${opt:region}/${opt:stage}.yml):Az1}
+          - ${file(cicd/env/${opt:region}/${opt:stage}.yml):Az1}
           - true
       Az2:
         Fn::Equals:
-          - ${file(src/env/${opt:region}/${opt:stage}.yml):Az2}
+          - ${file(cicd/env/${opt:region}/${opt:stage}.yml):Az2}
           - true
       Az3:
         Fn::Equals:
-          - ${file(src/env/${opt:region}/${opt:stage}.yml):Az3}
+          - ${file(cicd/env/${opt:region}/${opt:stage}.yml):Az3}
+          - true
+      MySql:
+        Fn::Equals:
+          - ${file(cicd/env/${opt:region}/${opt:stage}.yml):MySql}
+          - true
+      MsSql:
+        Fn::Equals:
+          - ${file(cicd/env/${opt:region}/${opt:stage}.yml):MsSql}
+          - true
+      GlobalConnect:
+        Fn::Equals:
+          - true # If you toggle this to false, not transit network will be deployed
           - true
   - Resources:
-  - ${file(src/networking/vpc.serverless.yml)}
-  - ${file(src/networking/subnet.serverless.yml)}
-  - ${file(src/networking/gateways.serverless.yml)}
-  - ${file(src/networking/routes.serverless.yml)}
-  - ${file(src/networking/sg.serverless.yml)}
-  - ${file(src/networking_advanced/transitgw.serverless.yml)}
-  # #Export names does not support _ so using - instead
-  # Outputs:
-  #   #VPC
-  #   FreedatVPC:
-  #     Description: Freedat VPC Id
-  #     Value:
-  #       Ref: FreedatVPC
-  #     Export:
-  #       Name: ${self:custom.universal.project_name}-${opt:stage}-vpc-id
-  #   #Public Subnet ID's
-  #   PublicSubnetAZ1:
-  #     Description: Public Subnet AZ 1 Id
-  #     Value:
-  #       Ref: PublicSubnetAZ1
-  #     Export:
-  #       Name: ${self:custom.universal.project_name}-${opt:stage}-public-az1
-  #   PublicSubnetAZ2:
-  #     Description: Public Subnet AZ 2 Id
-  #     Value:
-  #       Ref: PublicSubnetAZ2
-  #     Export:
-  #       Name: ${self:custom.universal.project_name}-${opt:stage}-public-az2
-  #   #Lambda Subnet ID's
-  #   LambdaSubnetAZ1:
-  #     Description: Lambda Subnet AZ 1 Id
-  #     Value:
-  #       Ref: LambdaSubnetAZ1
-  #     Export:
-  #       Name: ${self:custom.universal.project_name}-${opt:stage}-lambda-az1
-  #   LambdaSubnetAZ2:
-  #     Description: Lambda Subnet AZ 2 Id
-  #     Value:
-  #       Ref: LambdaSubnetAZ2
-  #     Export:
-  #       Name: ${self:custom.universal.project_name}-${opt:stage}-lambda-az2
-  #   #DB Subnet ID's
-  #   DBSubnetAZ1:
-  #     Description: DB Subnet AZ 1 Id
-  #     Value:
-  #       Ref: DBSubnetAZ1
-  #     Export:
-  #       Name: ${self:custom.universal.project_name}-${opt:stage}-db-az1
-  #   DBSubnetAZ2:
-  #     Description: DB Subnet AZ 2 Id
-  #     Value:
-  #       Ref: DBSubnetAZ2
-  #     Export:
-  #       Name: ${self:custom.universal.project_name}-${opt:stage}-db-az2
-  #   #Security Groups
-  #   BastionSG:
-  #     Description: Bastion Security Group Id
-  #     Value:
-  #       Fn::GetAtt:
-  #       - BastionSG
-  #       - GroupId
-  #     Export:
-  #       Name: ${self:custom.universal.project_name}-${opt:stage}-bastion-sg-group-id
-  #   LambdaSG:
-  #     Description: Lambda Security Group Id
-  #     Value:
-  #       Fn::GetAtt:
-  #       - LambdaSG
-  #       - GroupId
-  #     Export:
-  #       Name: ${self:custom.universal.project_name}-${opt:stage}-lambda-sg-group-id
-  #   DBSG:
-  #     Description: DB Security Group Id
-  #     Value:
-  #       Fn::GetAtt:
-  #       - DBSG
-  #       - GroupId
-  #     Export:
-  #       Name: ${self:custom.universal.project_name}-${opt:stage}-db-sg-group-id
-  #   #Account id
-  #   AccountId:
-  #     Value:
-  #       Ref: AWS::AccountId
-  #     Export:
-  #       Name: ${self:custom.universal.project_name}-${opt:stage}-account-id
+  - ${file(cicd/resources/networking/vpc.serverless.yml)}
+  - ${file(cicd/resources/networking/subnet.serverless.yml)}
+  - ${file(cicd/resources/networking/gateways.serverless.yml)}
+  - ${file(cicd/resources/networking/routes.serverless.yml)}
+  - ${file(cicd/resources/networking/sg.serverless.yml)}
+  - ${file(cicd/resources/networking/transitgw.serverless.yml)}
+ 

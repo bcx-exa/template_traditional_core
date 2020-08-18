@@ -3,10 +3,10 @@
     Vpc:
       Type: AWS::EC2::VPC
       Properties:
-        CidrBlock: ${file(src/env/${opt:region}/${opt:stage}.yml):Vpc}
+        CidrBlock: ${file(cicd/env/${opt:region}/${opt:stage}.yml):Vpc}
         EnableDnsSupport: true
         EnableDnsHostnames: true
         InstanceTenancy: default
         Tags:
         - Key: Name
-          Value: ${file(src/env/${opt:region}/${opt:stage}.yml):ProjectName}-Vpc
+          Value: ${file(cicd/env/${opt:region}/${opt:stage}.yml):ProjectName}-Vpc

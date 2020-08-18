@@ -42,8 +42,9 @@ Resources:
           Value: DbSg
         - Key: Security group name
           Value:  DbSg
-  DbSgIngress:
+  DbSgAppMySqlIngress:
     DependsOn: DbSg
+    Condition: MySql
     Type: "AWS::EC2::SecurityGroupIngress"
     Properties:
       GroupId:
@@ -55,6 +56,45 @@ Resources:
         Fn::GetAtt:
           - AppSg
           - GroupId
-          # - MgmtSg
-          # - GroupId
-
+  DbSgMgmtMySqlIngress:
+    DependsOn: DbSg
+    Condition: MySql
+    Type: "AWS::EC2::SecurityGroupIngress"
+    Properties:
+      GroupId:
+        Ref: DbSg
+      IpProtocol: tcp
+      FromPort: 3306
+      ToPort: 3306
+      SourceSecurityGroupId:
+        Fn::GetAtt:
+          - MgmtSg
+          - GroupId
+  DbSgAppMsSqlIngress:
+    DependsOn: DbSg
+    Condition: MsSql
+    Type: "AWS::EC2::SecurityGroupIngress"
+    Properties:
+      GroupId:
+        Ref: DbSg
+      IpProtocol: tcp
+      FromPort: 1433
+      ToPort: 1433
+      SourceSecurityGroupId:
+        Fn::GetAtt:
+          - AppSg
+          - GroupId
+  DbSgMgmtMsSqlIngress:
+    DependsOn: DbSg
+    Condition: MsSql
+    Type: "AWS::EC2::SecurityGroupIngress"
+    Properties:
+      GroupId:
+        Ref: DbSg
+      IpProtocol: tcp
+      FromPort: 1433
+      ToPort: 1433
+      SourceSecurityGroupId:
+        Fn::GetAtt:
+          - MgmtSg
+          - GroupId

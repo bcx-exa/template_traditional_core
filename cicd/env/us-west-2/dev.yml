@@ -1,0 +1,17 @@
+ProjectName: us-west-2-dev
+Vpc: 10.12.0.0/16
+WebSubAz1: 10.12.1.0/24
+WebSubAz2: 10.12.2.0/24
+WebSubAz3: 10.12.3.0/24
+AppSubAz1: 10.12.11.0/24
+AppSubAz2: 10.12.12.0/24
+AppSubAz3: 10.12.13.0/24
+DbSubAz1: 10.12.21.0/24
+DbSubAz2: 10.12.22.0/24
+DbSubAz3: 10.12.23.0/24
+Az1: true
+Az2: true
+Az3: true
+GlobalNetwork: true
+MySql: true
+MsSql: true 

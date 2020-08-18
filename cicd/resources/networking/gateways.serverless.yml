@@ -5,7 +5,7 @@ Resources:
     Properties:
       Tags:
         - Key: Name
-          Value: ${file(src/env/${opt:region}/${opt:stage}.yml):ProjectName}-igw
+          Value: ${file(cicd/env/${opt:region}/${opt:stage}.yml):ProjectName}-igw
   #Attach IGW to VPC
   AttachGateway:
     Type: AWS::EC2::VPCGatewayAttachment
@@ -22,7 +22,7 @@ Resources:
     Properties:
       Tags:
         - Key: Name
-          Value: ${file(src/env/${opt:region}/${opt:stage}.yml):ProjectName}-eip-ngw-az1
+          Value: ${file(cicd/env/${opt:region}/${opt:stage}.yml):ProjectName}-eip-ngw-az1
       Domain: Vpc
   EipAz2:
     Condition: Az2
@@ -31,7 +31,7 @@ Resources:
     Properties:
       Tags:
         - Key: Name
-          Value: ${file(src/env/${opt:region}/${opt:stage}.yml):ProjectName}-eip-ngw-az2
+          Value: ${file(cicd/env/${opt:region}/${opt:stage}.yml):ProjectName}-eip-ngw-az2
       Domain: Vpc
   EipAz3:
     Condition: Az3
@@ -40,7 +40,7 @@ Resources:
     Properties:
       Tags:
         - Key: Name
-          Value: ${file(src/env/${opt:region}/${opt:stage}.yml):ProjectName}-eip-ngw-az3
+          Value: ${file(cicd/env/${opt:region}/${opt:stage}.yml):ProjectName}-eip-ngw-az3
       Domain: Vpc
   #NAT Gateways
   NatGatewayAz1:
@@ -55,7 +55,7 @@ Resources:
         Ref: WebSubAz1
       Tags:
         - Key: Name
-          Value: ${file(src/env/${opt:region}/${opt:stage}.yml):ProjectName}-ngw-az1
+          Value: ${file(cicd/env/${opt:region}/${opt:stage}.yml):ProjectName}-ngw-az1
   NatGatewayAz2:
     Type: AWS::EC2::NatGateway
     Condition: Az2
@@ -68,7 +68,7 @@ Resources:
         Ref: WebSubAz2
       Tags:
         - Key: Name
-          Value: ${file(src/env/${opt:region}/${opt:stage}.yml):ProjectName}-ngw-az2
+          Value: ${file(cicd/env/${opt:region}/${opt:stage}.yml):ProjectName}-ngw-az2
   NatGatewayAz3:
     Type: AWS::EC2::NatGateway
     Condition: Az3
@@ -81,4 +81,4 @@ Resources:
         Ref: WebSubAz3
       Tags:
         - Key: Name
-          Value: ${file(src/env/${opt:region}/${opt:stage}.yml):ProjectName}-ngw-az3
+          Value: ${file(cicd/env/${opt:region}/${opt:stage}.yml):ProjectName}-ngw-az3

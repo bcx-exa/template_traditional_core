@@ -1,4 +1,4 @@
-ProjectName: base-template
+ProjectName: us-east-1-dev
 Vpc: 10.10.0.0/16
 WebSubAz1: 10.10.1.0/24
 WebSubAz2: 10.10.2.0/24
@@ -13,3 +13,5 @@ Az1: true
 Az2: true
 Az3: true
 GlobalNetwork: true
+MySql: true
+MsSql: true 

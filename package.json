@@ -4,7 +4,8 @@
   "description": "The goal is to automate the deployment of traditional architectures in the Cloud",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "npm run test",
+    "deploy:dev": "sls deploy --region af-south-1 --stage dev --aws-profile bcx_cloud_consulting && sls deploy --region ap-southeast-2 --stage dev --aws-profile bcx_cloud_consulting"
   },
   "author": "Martin Greyling",
   "license": "UNLICENSED",
