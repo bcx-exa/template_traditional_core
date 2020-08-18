@@ -1,0 +1,112 @@
+Resources:
+  #Create Web Tier (Public)
+  WebSubAz1:
+    Type: AWS::EC2::Subnet
+    Condition: Az1
+    Properties:
+      VpcId:
+        Ref: Vpc
+      CidrBlock: ${file(src/env/${opt:region}/${opt:stage}.yml):WebSubAz1}
+      AvailabilityZone: "${opt:region}a"
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: WebSubAz1
+  WebSubAz2:
+    Type: AWS::EC2::Subnet
+    Condition: Az2
+    Properties:
+      VpcId:
+        Ref: Vpc
+      CidrBlock: ${file(src/env/${opt:region}/${opt:stage}.yml):WebSubAz2}
+      AvailabilityZone: "${opt:region}b"
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: WebSubAz2
+  WebSubAz3:
+    Type: AWS::EC2::Subnet
+    Condition: Az3
+    Properties:
+      VpcId:
+        Ref: Vpc
+      CidrBlock: ${file(src/env/${opt:region}/${opt:stage}.yml):WebSubAz3}
+      AvailabilityZone: "${opt:region}c"
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: WebSubAz3
+  #Create App Tier (Private)
+  AppSubAz1:
+    Type: AWS::EC2::Subnet
+    Condition: Az1
+    Properties:
+      VpcId:
+        Ref: Vpc
+      CidrBlock: ${file(src/env/${opt:region}/${opt:stage}.yml):AppSubAz1}
+      AvailabilityZone: "${opt:region}a"
+      MapPublicIpOnLaunch: false
+      Tags:
+        - Key: Name
+          Value: AppSubAz1
+  AppSubAz2:
+    Type: AWS::EC2::Subnet
+    Condition: Az2
+    Properties:
+      VpcId:
+        Ref: Vpc
+      CidrBlock: ${file(src/env/${opt:region}/${opt:stage}.yml):AppSubAz2}
+      AvailabilityZone: "${opt:region}b"
+      MapPublicIpOnLaunch: false
+      Tags:
+        - Key: Name
+          Value: AppSubAz2
+  AppSubAz3:
+    Type: AWS::EC2::Subnet
+    Condition: Az3
+    Properties:
+      VpcId:
+        Ref: Vpc
+      CidrBlock: ${file(src/env/${opt:region}/${opt:stage}.yml):AppSubAz3}
+      AvailabilityZone: "${opt:region}c"
+      MapPublicIpOnLaunch: false
+      Tags:
+        - Key: Name
+          Value: AppSubAz3
+  #Create DB Tier (Private)
+  DbSubAz1:
+    Type: AWS::EC2::Subnet
+    Condition: Az1
+    Properties:
+      VpcId:
+        Ref: Vpc
+      CidrBlock: ${file(src/env/${opt:region}/${opt:stage}.yml):DbSubAz1}
+      AvailabilityZone: "${opt:region}a"
+      MapPublicIpOnLaunch: false
+      Tags:
+        - Key: Name
+          Value: DbSubAz1
+  DbSubAz2:
+    Type: AWS::EC2::Subnet
+    Condition: Az2
+    Properties:
+      VpcId:
+        Ref: Vpc
+      CidrBlock: ${file(src/env/${opt:region}/${opt:stage}.yml):DbSubAz2}
+      AvailabilityZone: "${opt:region}b"
+      MapPublicIpOnLaunch: false
+      Tags:
+        - Key: Name
+          Value: DbSubAz2
+  DbSubAz3:
+    Type: AWS::EC2::Subnet
+    Condition: Az3
+    Properties:
+      VpcId:
+        Ref: Vpc
+      CidrBlock: ${file(src/env/${opt:region}/${opt:stage}.yml):DbSubAz3}
+      AvailabilityZone: "${opt:region}c"
+      MapPublicIpOnLaunch: false
+      Tags:
+        - Key: Name
+          Value: DbSubAz3

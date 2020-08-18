@@ -1,0 +1,15 @@
+{
+  "name": "traditional-base",
+  "version": "1.0.0",
+  "description": "The goal is to automate the deployment of traditional architectures in the Cloud",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "author": "Martin Greyling",
+  "license": "UNLICENSED",
+  "dependencies": {},
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
