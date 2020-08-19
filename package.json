@@ -9,7 +9,9 @@
   },
   "author": "Martin Greyling",
   "license": "UNLICENSED",
-  "dependencies": {},
+  "dependencies": {
+    "aws-sdk": "^2.736.0"
+  },
   "devDependencies": {
     "dotenv": "^8.2.0"
   }
